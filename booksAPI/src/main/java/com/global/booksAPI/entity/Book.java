@@ -1,6 +1,8 @@
 package com.global.booksAPI.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
 
 import java.util.Date;
 
@@ -12,10 +14,14 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     @Column(name = "title")
+    @NotBlank(message = "enter a valid title")
     String title;
     @Column(name = "author_name")
+    @NotBlank(message = "enter a valid author name")
     String author;
     @Column(name = "published_date")
+    @NotBlank(message = "enter a valid date")
+    @Past(message = "you should enter a past date")
     Date publishedDate;
 
     public Integer getId() {
